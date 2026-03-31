@@ -50,7 +50,7 @@ export default async function AdminDashboard() {
                     </td>
                   </tr>
                 ) : (
-                  bookings.map((booking) => {
+                  bookings.map((booking: any) => {
                     let servicesParsed = [];
                     try {
                       servicesParsed = JSON.parse(booking.services);
@@ -117,7 +117,7 @@ export default async function AdminDashboard() {
                     </td>
                   </tr>
                 ) : (
-                  leads.map((lead) => (
+                  leads.map((lead: any) => (
                     <tr key={lead.id} className="hover:bg-muted/10 transition-colors">
                       <td className="px-6 py-4 font-medium">{format(lead.createdAt, "MMM d, yyyy HH:mm")}</td>
                       <td className="px-6 py-4 font-medium">{lead.name}</td>
