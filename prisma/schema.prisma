@@ -1,0 +1,38 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Lead {
+  id          String   @id @default(uuid())
+  name        String
+  email       String?
+  phone       String
+  eventDate   DateTime
+  service     String
+  location    String?
+  budget      String?
+  status      String   @default("NEW") // NEW, CONTACTED, JUNK
+  createdAt   DateTime @default(now())
+}
+
+model Booking {
+  id          String   @id @default(uuid())
+  clientName  String
+  clientPhone String
+  eventDate   DateTime
+  services    String   // Storing JSON string of selected packages
+  totalPrice  Int
+  advancePaid Int      @default(0)
+  status      String   @default("CONFIRMED")
+  createdAt   DateTime @default(now())
+}
+
+model AdminUser {
+  id       String @id @default(uuid())
+  email    String @unique
+  password String
+}
